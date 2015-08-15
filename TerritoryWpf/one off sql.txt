@@ -1,0 +1,30 @@
+-- rename Id Status
+ALTER TABLE "main"."Status" RENAME TO "oXHFcGcd04oXHFcGcd04_Status";
+CREATE TABLE "main"."Status" ("Id" INTEGER PRIMARY KEY  DEFAULT (null) ,"StatusName" varchar(50));
+INSERT INTO "main"."Status" SELECT "StatusId","StatusName" FROM "main"."oXHFcGcd04oXHFcGcd04_Status";
+DROP TABLE "main"."oXHFcGcd04oXHFcGcd04_Status";
+
+-- rename Id House
+ALTER TABLE "main"."House" RENAME TO "oXHFcGcd04oXHFcGcd04_House";
+CREATE TABLE "main"."House" ("Id" INTEGER PRIMARY KEY,"CardName" varchar(10),"Street" varchar(50),"StreetNum" varchar(50),"Apt" varchar(50),"CityID" int,"Zip" varchar(10),"ZipExt" varchar(4),"LName" varchar(50),"FName" varchar(50),"Tel" varchar(15),"Map" varchar(5),"Grid" varchar(5),"Information" varchar(64),"StatusID" int NOT NULL ,"LastUpdateDate" date,"CountyID" int NOT NULL ,"Source" varchar(50),"DeleteFlag" int NOT NULL ,"Longitude" float(22),"Latitude" float(22));
+INSERT INTO "main"."House" SELECT "HouseId","CardName","Street","StreetNum","Apt","CityID","Zip","ZipExt","LName","FName","Tel","Map","Grid","Information","StatusID","LastUpdateDate","CountyID","Source","DeleteFlag","Longitude","Latitude" FROM "main"."oXHFcGcd04oXHFcGcd04_House";
+DROP TABLE "main"."oXHFcGcd04oXHFcGcd04_House";
+
+-- Rename Id County
+ALTER TABLE "main"."County" RENAME TO "oXHFcGcd04oXHFcGcd04_County";
+CREATE TABLE "main"."County" ("Id" integer PRIMARY KEY,"CountyName" varchar(50));
+INSERT INTO "main"."County" SELECT "CountyID","CountyName" FROM "main"."oXHFcGcd04oXHFcGcd04_County";
+DROP TABLE "main"."oXHFcGcd04oXHFcGcd04_County";
+
+-- Rename Id Congregation table 
+ALTER TABLE "main"."Congregation" RENAME TO "oXHFcGcd04oXHFcGcd04_Congregation";
+CREATE TABLE "main"."Congregation" ("Id" INTEGER PRIMARY KEY,"CongregationName" varchar(50));
+INSERT INTO "main"."Congregation" SELECT "CongregationID","CongregationName" FROM "main"."oXHFcGcd04oXHFcGcd04_Congregation";
+DROP TABLE "main"."oXHFcGcd04oXHFcGcd04_Congregation";
+
+-- Rename Id City table
+ALTER TABLE "main"."City" RENAME TO "oXHFcGcd04oXHFcGcd04_City";
+CREATE TABLE "main"."City" ("Id" INTEGER PRIMARY KEY,"CityName" varchar(50),"Code" varchar(3),"MapPointCityName" varchar(50),"TerritoryCityID" int);
+INSERT INTO "main"."City" SELECT "Id","CityName","Code","MapPointCityName","TerritoryCityID" FROM "main"."oXHFcGcd04oXHFcGcd04_City";
+DROP TABLE "main"."oXHFcGcd04oXHFcGcd04_City";
+
